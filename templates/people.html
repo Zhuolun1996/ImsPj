@@ -1,0 +1,95 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- Nav tabs -->
+    <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation"><a href="/">About</a></li>
+        <li role="presentation" class="active"><a href="/people/">People</a></li>
+        <li role="presentation"><a href="#profile" role="tab">Publication</a></li>
+        <li role="presentation"><a href="#messages" role="tab">Patent</a></li>
+        <li role="presentation"><a href="#settings">Resources</a></li>
+        <li role="presentation"><a href="/blog/">Blog</a></li>
+        <li role="presentation"><a href="#settings">Ask</a></li>
+    </ul>
+
+    <div class="row">
+        <div class="col-md-3">
+            <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
+                <ul class="nav bs-docs-sidenav">
+                    <li>
+                        <a href="#staff" style="font-size:120%">Staff</a>
+                    </li>
+                    <li>
+                        <a href="#Gstudent" style="font-size:120%">Graduated Student</a>
+                    </li>
+                    <li>
+                        <a href="#Ustudent" style="font-size:120%">Undergraduated Student</a>
+                    </li>
+                </ul>
+                <a class="back-to-top" href="#top">
+                    Back to Top
+                </a>
+
+            </nav>
+        </div>
+        <div class="col-md-9" role="main">
+            <div class="container-fluid">
+                <div class="section">
+                    <div class="row">
+                        <h1 id="staff" class="page-header">Staff</h1>
+                        {% for item in staff %}
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail">
+                                    <img src="{{ item.img.url }}" style="width:220px; height:220px">
+                                    <div class="caption">
+                                        <h3>{{ item.name }}</h3>
+                                        <p>{{ item.intro }}</p>
+                                        <p><a href="{% url "staffDetail" name=item.name %}" class="btn btn-primary center-block"
+                                              role="button">Button</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="row">
+                        <h1 id="Gstudent" class="page-header">Graduated Student</h1>
+                        {% for item in Gstudent %}
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail">
+                                    <img src="{{ item.img.url }}" style="width:220px; height:220px">
+                                    <div class="caption">
+                                        <h3>{{ item.name }}</h3>
+                                        <p>{{ item.intro }}</p>
+                                        <p><a href="{% url "staffDetail" name=item.name %}" class="btn btn-primary text-center" role="button">Button</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div class="section">
+                    <div class="row">
+                        <h1 id="Ustudent" class="page-header">Undergraduated Student</h1>
+                        {% for item in Ustudent %}
+                            <div class="col-sm-6 col-md-4">
+                                <div class="thumbnail">
+                                    <img src="{{ item.img.url }}" style="width:220px; height:220px">
+                                    <div class="caption">
+                                        <h3>{{ item.name }}</h3>
+                                        <p>{{ item.intro }}</p>
+                                        <p><a href="{% url "staffDetail" name=item.name %}" class="btn btn-primary text-center" role="button">Button</a>
+                                        </p>
+                                    </div>
+                                </div>
+                            </div>
+                        {% endfor %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+{% endblock %}

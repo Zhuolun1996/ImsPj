@@ -1,0 +1,52 @@
+{% extends "base.html" %}
+{% block content %}
+    <!-- Nav tabs -->
+        <ul class="nav nav-tabs" role="tablist">
+            <li role="presentation"><a href="/">About</a></li>
+            <li role="presentation" class="active"><a href="/people/">People</a></li>
+            <li role="presentation"><a href="#profile" role="tab">Publication</a></li>
+            <li role="presentation"><a href="#messages" role="tab">Patent</a></li>
+            <li role="presentation"><a href="#settings">Resources</a></li>
+            <li role="presentation"><a href="/blog/">Blog</a></li>
+            <li role="presentation"><a href="#settings">Ask</a></li>
+        </ul>
+        <div class="row">
+            <div class="col-md-3">
+                <nav class="bs-docs-sidebar hidden-print hidden-xs hidden-sm">
+                    <ul class="nav bs-docs-sidenav">
+                        <li>
+                            <a href="#bio" style="font-size:150%">bio</a>
+                        </li>
+                        <li>
+                            <a href="#2" style="font-size:150%">2</a>
+                        </li>
+                        <li>
+                            <a href="#3" style="font-size:120%">3</a>
+                        </li>
+                    </ul>
+                    <a class="back-to-top" href="#top">
+                        Back to Top
+                    </a>
+                </nav>
+            </div>
+            <div class="col-md-9" role="main">
+                <div class="row">
+                    <div class="col-xs-7">
+                        <h1>{{ staff.name }}</h1>
+                    </div>
+                    <div class="col-xs-2">
+                        <img data-src="holder.js/100%x150" alt="Generic placeholder thumbnail">
+                    </div>
+                </div>
+                <h1 id="bio" class="page-header">
+                    BIO
+                </h1>
+                <h1 id="2" class="page-header">
+                    2
+                </h1>
+                <h1 id="3" class="page-header">
+                    3
+                </h1>
+            </div>
+        </div>
+{% endblock %}
