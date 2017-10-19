@@ -29,6 +29,10 @@ urlpatterns = [
     url(r'^blog/detail/(?P<id>\d+)$', IMSview.blogDetail, name='blogDetail'),
     url(r'^blog/tag/(?P<tag>\w+)/$', IMSview.blogTag, name='blogTag'),
     url(r'^blog/search/$', IMSview.blogSearch, name='blogSearch'),
+    url(r'^publication/$', IMSview.publicationHome, name='publication'),
+    url(r'^publication/tag/(?P<tag>\w+)/$', IMSview.publicationTag, name='publicationTag'),
+    url(r'^publication/year/(?P<year>\w+)/$', IMSview.publicationYear, name='publicationYear'),
+    url(r'^publication/search/$', IMSview.publicationSearch, name='publicatinoSearch'),
 
 ]
 # Use static file server for static and media files (debug only)

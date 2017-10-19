@@ -59,7 +59,7 @@ class blog(models.Model):
 
 
 class papers(models.Model):
-    title=models.CharField(max_length=200,primary_key=True)
+    title=models.CharField(max_length=200)
     category = models.CharField(max_length=50, blank=True)
     year=models.IntegerField(default=datetime.date.today().year)
     file=models.FileField(upload_to='file')

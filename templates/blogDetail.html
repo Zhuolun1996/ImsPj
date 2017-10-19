@@ -5,21 +5,48 @@
     <ul class="nav nav-tabs" role="tablist">
         <li role="presentation"><a href="/">About</a></li>
         <li role="presentation"><a href="/people/">People</a></li>
-        <li role="presentation"><a href="#profile" role="tab">Publication</a></li>
+        <li role="presentation"><a href="/publication/" role="tab">Publication</a></li>
         <li role="presentation"><a href="#messages" role="tab">Patent</a></li>
         <li role="presentation"><a href="#settings">Resources</a></li>
         <li role="presentation" class="active"><a href="/blog/">Blog</a></li>
         <li role="presentation"><a href="#settings">Ask</a></li>
     </ul>
-     <div class="posts bs-docs-section">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="row-toolbar" style="margin-top:16%; margin-left:6%;">
+                <form class="form-inline" action="/blog/search/" method="get">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search" name="search">
+                    </div>
+                    <input type="submit" class="btn btn-default" style="display: none">
+                </form>
+            </div>
+            <nav class="hidden-print hidden-xs hidden-sm">
+                <ul class="nav bs-docs-sidenav">
+                    <li>
+                        <a href="#top" style="font-size:120%">categories</a>
+                        <ul>
+                            {% for item in categories %}
+                            <li><a href="/blog/tag/{{ item.category }}">{{ item.category }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+                <a class="back-to-top" href="#top">
+                    Back to Top
+                </a>
+            </nav>
+
+        </div>
+     <div class="posts bs-docs-section col-md-9">
         <section class="post">
             <header class="post-header">
                 {% if post.title != "" %}
-                    <h1 class="post-title page-header">{{ post.title }}</h1>
+                    <h2 class="post-title page-header">{{ post.title }}</h2>
 
                     <p class="post-meta">
                         Time: <a class="post-author" href="#">{{ post.date_time|date:"Y /m /d" }}</a>
-                        <a class="post-category post-category-js"
+                        Category: <a class="post-category post-category-js"
                            href="{% url "blogTag" tag=post.category %}">{{ post.category|title }}</a>
                     </p>
                     </header>
@@ -32,4 +59,5 @@
                 {% endif %}
         </section>
     </div><!-- /.blog-post -->
+    </div>
 {% endblock %}

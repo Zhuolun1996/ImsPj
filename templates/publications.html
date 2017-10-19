@@ -1,15 +1,89 @@
 {% extends "base.html" %}
+{% load markdown_deux_tags %}
 {% block content %}
     <!-- Nav tabs -->
     <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="/">About</a></li>
+        <li role="presentation"><a href="/">About</a></li>
         <li role="presentation"><a href="/people/">People</a></li>
-        <li role="presentation"><a href="#profile" role="tab">Publication</a></li>
-        <li role="presentation"><a href="#messages" role="tab">Patent</a></li>
+        <li role="presentation" class="active"><a href="/publication/" role="tab">Publication</a></li>
+        <li role="presentation"><a href="/messages/" role="tab">Patent</a></li>
         <li role="presentation"><a href="#settings">Resources</a></li>
         <li role="presentation"><a href="/blog/">Blog</a></li>
         <li role="presentation"><a href="#settings">Ask</a></li>
     </ul>
-    <div class="col-md-9" role="main">
+    <div class="row">
+        <div class="col-md-3">
+            <div class="row-toolbar" style="margin-top:16%; margin-left:6%;">
+                <form class="form-inline" action="/publication/search/" method="get">
+                    <div class="form-group">
+                        <input type="text" class="form-control" placeholder="Search" name="search">
+                    </div>
+                    <input type="submit" class="btn btn-default" style="display: none">
+                </form>
+            </div>
+            <nav class="hidden-print hidden-xs hidden-sm">
+                <ul class="nav bs-docs-sidenav">
+                    <li>
+                        <a href="#top" style="font-size:120%">categories</a>
+                        <ul>
+                            {% for item in categories %}
+                                <li><a href="/publication/tag/{{ item.category }}">{{ item.category }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+            <nav class="hidden-print hidden-xs hidden-sm">
+                <ul class="nav bs-docs-sidenav">
+                    <li>
+                        <a href="#top" style="font-size:120%">years</a>
+                        <ul>
+                            {% for item in years %}
+                                <li><a href="/publication/year/{{ item.year }}">{{ item.year }}</a></li>
+                            {% endfor %}
+                        </ul>
+                    </li>
+                </ul>
+                <a class="back-to-top" href="#top">
+                    Back to Top
+                </a>
+            </nav>
+
+        </div>
+        <div class="posts col-md-9">
+            {% for post in post_list %}
+                {% if post.title != "" %}
+                    <section class="post">
+                    <header class="post-header">
+                        <h2 class="post-title page-header">{{ post.title }}</h2>
+
+                        <p class="post-meta">
+                            Time: <a class="post-author" href="#">{{ post.date_time |date:"Y /m /d" }}</a>
+                             Category: <a class="post-category post-category-js"
+                               href="{% url "publicationTag" tag=post.category %}">{{ post.category|title }}</a>
+                            Year: <a class="post-category post-category-js"
+                               href="{% url "publicationYear" year=post.year %}">{{ post.year|title }}</a>
+                        </p>
+                    </header>
+
+                    <a href="{{ post.file.url }}" role="button">Download[{{ post.file.size }}bytes]</a>
+                {% endif %}
+            </section>
+            {% endfor %}
+
+            {% if post_list.object_list and post_list.paginator.num_pages > 1 %}
+                <div>
+                    <ul class="pager">
+                        {% if post_list.has_previous %}
+                            <li><a href="?page={{ post_list.previous_page_number }}">上一页</a></li>
+                        {% endif %}
+
+                        {% if post_list.has_next %}
+                            <li><a href="?page={{ post_list.next_page_number }}">下一页</a></li>
+                        {% endif %}
+                    </ul>
+                </div>
+            {% endif %}
+        </div><!-- /.blog-post -->
     </div>
 {% endblock %}
