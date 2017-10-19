@@ -57,7 +57,7 @@
 
                     <div class="post-description">
                         <p>
-                            {{ post.content|markdown:'recipe'|truncatewords_html:10 }}
+                            {{ post.content|markdown:'recipe'|truncatewords_html:10|striptags }}
                         </p>
                     </div>
                     <a class="pure-button" href="{% url "blogDetail" id=post.id %}">Read More >>> </a>
