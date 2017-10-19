@@ -2,7 +2,7 @@
 {% load markdown_deux_tags %}
 {% block content %}
     <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
+    <ul class="nav nav-tabs nav-justified" role="tablist">
         <li role="presentation"><a href="/">About</a></li>
         <li role="presentation"><a href="/people/">People</a></li>
         <li role="presentation"><a href="/publication/" role="tab">Publication</a></li>
@@ -13,7 +13,7 @@
     </ul>
     <div class="row">
         <div class="col-md-3">
-            <div class="row-toolbar" style="margin-top:16%; margin-left:6%;">
+            <div class="row-toolbar hidden-print hidden-xs hidden-sm" style="margin-top:16%; margin-left:6%;">
                 <form class="form-inline" action="/blog/search/" method="get">
                     <div class="form-group">
                         <input type="text" class="form-control" placeholder="Search" name="search">
@@ -32,9 +32,6 @@
                         </ul>
                     </li>
                 </ul>
-                <a class="back-to-top" href="#top">
-                    Back to Top
-                </a>
             </nav>
 
         </div>

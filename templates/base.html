@@ -6,19 +6,26 @@
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/buttons.css">
     <link rel="stylesheet" href="/static/css/docs.min.css">
-
+    <style>
+        .nav-tabs{
+            background-color: white;
+        }
+        .bs-docs-sidenav{
+            margin-top:40px;
+        }
+    </style>
 </head>
 <body>
 <div class="container bs-docs-container">
     <div class="page-header" id="top">
-            <div class="row">
-                <div class="col-xs-8">
-                    <h1>Example page header or logo
-                        <small>Subtext for header</small>
-                    </h1>
-                </div>
-                <div class="col-xs-4"><h1>SYSULOGO</h1></div>
+        <div class="row">
+            <div class="col-xs-8">
+                <h1>Example page header or logo
+                    <small>Subtext for header</small>
+                </h1>
             </div>
+            <div class="col-xs-4"><h1>SYSULOGO</h1></div>
+        </div>
     </div>
     {% block content %}
     {% endblock %}
@@ -30,3 +37,14 @@
 <script src="/static/js/jquery.min.js"></script>
 <script src="/static/js/bootstrap.min.js"></script>
 <script src="/static/js/docs.min.js"></script>
+<script src="/static/js/scrollfix.min.js"></script>
+<script type="text/javascript">
+    $(document).ready(function() {
+
+        // Dock the header to the top of the window when scrolled past the banner.
+        // This is the default behavior.
+
+        $('.nav').scrollFix({zIndex: 1000});
+    });
+
+</script>
