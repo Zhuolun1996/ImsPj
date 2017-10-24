@@ -1,15 +1,57 @@
 {% extends "base.html" %}
+{% load markdown_deux_tags %}
 {% block content %}
     <!-- Nav tabs -->
     <ul class="nav nav-tabs nav-justified" role="tablist">
-        <li role="presentation" class="active"><a href="/">About</a></li>
+        <li role="presentation"><a href="/about/">About</a></li>
         <li role="presentation"><a href="/people/">People</a></li>
         <li role="presentation"><a href="/publication/" role="tab">Publication</a></li>
-        <li role="presentation"><a href="#messages" role="tab">Patent</a></li>
-        <li role="presentation"><a href="#settings">Resources</a></li>
+        <li role="presentation" class="active"><a href="/patent/" role="tab">Patent</a></li>
+        <li role="presentation"><a href="/resource/">Resources</a></li>
         <li role="presentation"><a href="/blog/">Blog</a></li>
-        <li role="presentation"><a href="#settings">Ask</a></li>
+        <li role="presentation"><a href="/ask/">Ask</a></li>
     </ul>
-    <div class="col-md-9" role="main">
+    <div class="row">
+        <div class="col-md-9 col-md-offset-3">
+            <div class="posts col-md-9">
+                {% for post in post_list %}
+                    {% if post.title != "" %}
+                        <section class="post">
+                        <header class="post-header">
+                            <h2 class="post-title page-header"><a
+                                    href="{% url "blogDetail" id=post.id %}">{{ post.title }}</a></h2>
+
+                            <p class="post-meta">
+                                Time: <a class="post-author" href="#">{{ post.date_time |date:"Y /m /d" }}</a>
+                                Category: <a class="post-category post-category-js"
+                                             href="{% url "blogTag" tag=post.category %}">{{ post.category|title }}</a>
+                            </p>
+                        </header>
+
+                        <div class="post-description">
+                            <p>
+                                {{ post.content|markdown:'recipe'|truncatewords_html:10|striptags }}
+                            </p>
+                        </div>
+                        <a href="{% url "blogDetail" id=post.id %}" role="button">Read More >>> </a>
+                    {% endif %}
+                </section>
+                {% endfor %}
+
+                {% if post_list.object_list and post_list.paginator.num_pages > 1 %}
+                    <div>
+                        <ul class="pager">
+                            {% if post_list.has_previous %}
+                                <li><a href="?page={{ post_list.previous_page_number }}">上一页</a></li>
+                            {% endif %}
+
+                            {% if post_list.has_next %}
+                                <li><a href="?page={{ post_list.next_page_number }}">下一页</a></li>
+                            {% endif %}
+                        </ul>
+                    </div>
+                {% endif %}
+            </div><!-- /.blog-post -->
+        </div>
     </div>
 {% endblock %}

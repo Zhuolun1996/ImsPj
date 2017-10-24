@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>IMS</title>
+    <script src="/static/js/jquery.min.js"></script>
+</head>
+<body>
+<h2>Successfully Sent Your Ask</h2>
+<h2>Jump to Index in 3 Seconds</h2>
+</body>
+</html>
+
+<script>
+    $(document).ready(function () {
+        function jump(count) {
+            window.setTimeout(function () {
+                count--;
+                if (count > 0) {
+                    $('#num').attr('innerHTML', count);
+                    jump(count);
+                } else {
+                    location.href = "/";
+                }
+            }, 1000);
+        }
+
+        jump(2);
+    });
+</script>

@@ -1,15 +1,54 @@
 {% extends "base.html" %}
+{% load markdown_deux_tags %}
 {% block content %}
     <!-- Nav tabs -->
     <ul class="nav nav-tabs nav-justified" role="tablist">
-        <li role="presentation" class="active"><a href="/">About</a></li>
+        <li role="presentation"><a href="/about/">About</a></li>
         <li role="presentation"><a href="/people/">People</a></li>
         <li role="presentation"><a href="/publication/" role="tab">Publication</a></li>
-        <li role="presentation"><a href="#messages" role="tab">Patent</a></li>
-        <li role="presentation"><a href="#settings">Resources</a></li>
+        <li role="presentation"><a href="/patent/" role="tab">Patent</a></li>
+        <li role="presentation"><a href="/resource/">Resources</a></li>
         <li role="presentation"><a href="/blog/">Blog</a></li>
-        <li role="presentation"><a href="#settings">Ask</a></li>
+        <li role="presentation"><a href="/ask/">Ask</a></li>
     </ul>
-    <div class="col-md-9" role="main">
+    <div class="row">
+        <div style="margin-top: 2%">
+            <div class="col-md-3">
+                <img src="{{ item.pics1.url }}" style="width:260px; height:220px">
+            </div>
+            <div class="col-md-9">
+                <div>
+                    <p>{{ item.text1|markdown:'recipe' }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="posts col-md-3">
+            <h2 class="page-header">Events</h2>
+            {% for item in event %}
+                <h4>{{ item.title }}</h4>
+            {% endfor %}
+        </div>
+        <div class="posts col-md-9">
+            <h2 class="page-header">Blog</h2>
+            {% for post in post_list %}
+                {% if post.title != "" %}
+                    <section class="post">
+                    <header class="post-header">
+                        <h3 class="post-title page-header">
+                            <a href="{% url "blogDetail" id=post.id %}">{{ post.title }}</a></h3>
+
+                        <p class="post-meta">
+                            Time: <a class="post-author" href="#">{{ post.date_time |date:"Y /m /d" }}</a>
+                            Category: <a class="post-category post-category-js"
+                                         href="{% url "blogTag" tag=post.category %}">{{ post.category|title }}</a>
+                        </p>
+                    </header>
+                {% endif %}
+            </section>
+            {% endfor %}
+
+        </div><!-- /.blog-post -->
     </div>
 {% endblock %}

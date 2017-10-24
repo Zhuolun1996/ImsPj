@@ -2,13 +2,13 @@
 {% block content %}
     <!-- Nav tabs -->
     <ul class="nav nav-tabs nav-justified" role="tablist">
-        <li role="presentation"><a href="/">About</a></li>
+        <li role="presentation"><a href="/about/">About</a></li>
         <li role="presentation" class="active"><a href="/people/">People</a></li>
         <li role="presentation"><a href="/publication/" role="tab">Publication</a></li>
-        <li role="presentation"><a href="#messages" role="tab">Patent</a></li>
-        <li role="presentation"><a href="#settings">Resources</a></li>
+        <li role="presentation"><a href="/patent/" role="tab">Patent</a></li>
+        <li role="presentation"><a href="/resource/">Resources</a></li>
         <li role="presentation"><a href="/blog/">Blog</a></li>
-        <li role="presentation"><a href="#settings">Ask</a></li>
+        <li role="presentation"><a href="/ask/">Ask</a></li>
     </ul>
 
     <div class="row">
@@ -43,7 +43,8 @@
                                     <div class="caption">
                                         <h3>{{ item.name }}</h3>
                                         <p>{{ item.intro }}</p>
-                                        <p><a href="{% url "staffDetail" name=item.name %}" class="btn btn-primary center-block"
+                                        <p><a href="{% url "staffDetail" name=item.name %}"
+                                              class="btn btn-primary center-block"
                                               role="button">Button</a>
                                         </p>
                                     </div>
@@ -62,7 +63,8 @@
                                     <div class="caption">
                                         <h3>{{ item.name }}</h3>
                                         <p>{{ item.intro }}</p>
-                                        <p><a href="{% url "staffDetail" name=item.name %}" class="btn btn-primary text-center" role="button">Button</a>
+                                        <p><a href="{% url "staffDetail" name=item.name %}"
+                                              class="btn btn-primary text-center" role="button">Button</a>
                                         </p>
                                     </div>
                                 </div>
@@ -80,7 +82,8 @@
                                     <div class="caption">
                                         <h3>{{ item.name }}</h3>
                                         <p>{{ item.intro }}</p>
-                                        <p><a href="{% url "staffDetail" name=item.name %}" class="btn btn-primary text-center" role="button">Button</a>
+                                        <p><a href="{% url "staffDetail" name=item.name %}"
+                                              class="btn btn-primary text-center" role="button">Button</a>
                                         </p>
                                     </div>
                                 </div>

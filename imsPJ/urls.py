@@ -13,7 +13,7 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url
+from django.conf.urls import url,include
 from django.contrib import admin
 import IMS.views as IMSview
 from django.conf.urls.static import static
@@ -33,7 +33,11 @@ urlpatterns = [
     url(r'^publication/tag/(?P<tag>\w+)/$', IMSview.publicationTag, name='publicationTag'),
     url(r'^publication/year/(?P<year>\w+)/$', IMSview.publicationYear, name='publicationYear'),
     url(r'^publication/search/$', IMSview.publicationSearch, name='publicatinoSearch'),
-
+    url(r'^about/$',IMSview.aboutPage,name='about'),
+    url(r'^ask/$',IMSview.askHome,name='askHome'),
+    url(r'^patent/$',IMSview.patentHome,name='patentHome'),
+    url(r'^resource/$',IMSview.resourceHome,name='resourceHome'),
+    url(r'^captcha/', include('captcha.urls')),
 ]
 # Use static file server for static and media files (debug only)
 urlpatterns += static(settings.STATIC_URL, document_root=settings.STATIC_ROOT)

@@ -1,15 +1,28 @@
 {% extends "base.html" %}
+{% load bootstrap3 %}
 {% block content %}
     <!-- Nav tabs -->
-    <ul class="nav nav-tabs" role="tablist">
-        <li role="presentation" class="active"><a href="/">About</a></li>
+    <ul class="nav nav-tabs nav-justified" role="tablist">
+        <li role="presentation"><a href="/about/">About</a></li>
         <li role="presentation"><a href="/people/">People</a></li>
         <li role="presentation"><a href="/publication/" role="tab">Publication</a></li>
-        <li role="presentation"><a href="#messages" role="tab">Patent</a></li>
-        <li role="presentation"><a href="#settings">Resources</a></li>
+        <li role="presentation"><a href="/patent/" role="tab">Patent</a></li>
+        <li role="presentation"><a href="/resource/">Resources</a></li>
         <li role="presentation"><a href="/blog/">Blog</a></li>
-        <li role="presentation"><a href="#settings">Ask</a></li>
+        <li role="presentation" class="active"><a href="/ask/">Ask</a></li>
     </ul>
-    <div class="col-md-9" role="main">
+    <div class="row">
+        <div class="col-md-offset-4 col-md-4">
+            <form action="/ask/" method="post">
+                {% csrf_token %}
+                <div class="box">
+                    <fieldset>
+                        <h2 class="page-header">Your Ask</h2>
+                        {% bootstrap_form form layout='inline' %}
+                        <input class="button button-primary button-rounded button-glow" type="submit" value="submit"/>
+                    </fieldset>
+                </div>
+            </form>
+        </div>
     </div>
 {% endblock %}

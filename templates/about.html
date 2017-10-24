@@ -1,15 +1,20 @@
 {% extends "base.html" %}
+{% load markdown_deux_tags %}
 {% block content %}
     <!-- Nav tabs -->
     <ul class="nav nav-tabs nav-justified" role="tablist">
-        <li role="presentation"><a href="/about/">About</a></li>
+        <li role="presentation" class="active"><a href="/about/">About</a></li>
         <li role="presentation"><a href="/people/">People</a></li>
         <li role="presentation"><a href="/publication/" role="tab">Publication</a></li>
         <li role="presentation"><a href="/patent/" role="tab">Patent</a></li>
-        <li role="presentation" class="active"><a href="/resource/">Resources</a></li>
+        <li role="presentation"><a href="/resource/">Resources</a></li>
         <li role="presentation"><a href="/blog/">Blog</a></li>
         <li role="presentation"><a href="/ask/">Ask</a></li>
     </ul>
-    <div class="col-md-9" role="main">
+    <div class="row">
+        <div class="container">
+            <h2 class="page-header">About</h2>
+            <p>{{ content|markdown:'recipe' }}</p>
+        </div>
     </div>
 {% endblock %}

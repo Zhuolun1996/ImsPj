@@ -39,6 +39,8 @@ INSTALLED_APPS = [
     'django.contrib.staticfiles',
     'IMS.apps.ImsConfig',
     'markdown_deux',
+    'captcha',
+    'bootstrap3',
 ]
 
 MIDDLEWARE = [
