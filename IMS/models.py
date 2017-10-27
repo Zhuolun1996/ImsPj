@@ -52,9 +52,9 @@ class indexContent(models.Model):
 
 class blog(models.Model):
     title = models.CharField(max_length=100)
-    category = models.CharField(max_length=50, blank=True)
-    date_time = models.DateTimeField(default=timezone.now, null=True)
-    content = models.TextField(null=True)
+    category = models.CharField(max_length=50, null=False)
+    date_time = models.DateTimeField(default=timezone.now, null=False)
+    content = models.TextField(null=False)
 
     def __str__(self):
         return self.title
@@ -65,10 +65,10 @@ class blog(models.Model):
 
 class papers(models.Model):
     title = models.CharField(max_length=200)
-    category = models.CharField(max_length=50, blank=True)
+    category = models.CharField(max_length=50, null=False)
     year = models.IntegerField(default=datetime.date.today().year)
-    file = models.FileField(upload_to='file')
-    date_time = models.DateTimeField(default=timezone.now, null=True)
+    file = models.FileField(upload_to='PFile')
+    date_time = models.DateTimeField(default=timezone.now, null=False)
 
     def __str__(self):
         return self.title
@@ -79,9 +79,9 @@ class papers(models.Model):
 
 class patent(models.Model):
     title = models.CharField(max_length=100)
-    category = models.CharField(max_length=50, blank=True)
-    date_time = models.DateTimeField(default=timezone.now, null=True)
-    content = models.TextField(null=True)
+    category = models.CharField(max_length=50, null=False)
+    date_time = models.DateTimeField(default=timezone.now, null=False)
+    content = models.TextField(null=False)
 
     def __str__(self):
         return self.title
@@ -92,9 +92,9 @@ class patent(models.Model):
 
 class resource(models.Model):
     title = models.CharField(max_length=100)
-    category = models.CharField(max_length=50, blank=True)
-    date_time = models.DateTimeField(default=timezone.now, null=True)
-    content = models.TextField(null=True)
+    category = models.CharField(max_length=50, null=False)
+    date_time = models.DateTimeField(default=timezone.now, null=False)
+    file = models.FileField(upload_to='RFile')
 
     def __str__(self):
         return self.title
@@ -105,9 +105,9 @@ class resource(models.Model):
 
 class ask(models.Model):
     title = models.CharField(max_length=100)
-    date_time = models.DateTimeField(default=timezone.now, null=True)
-    content = models.TextField(null=True)
-    Email = models.EmailField(null=True)
+    date_time = models.DateTimeField(default=timezone.now, null=False)
+    content = models.TextField(null=False)
+    Email = models.EmailField(null=False)
 
     def __str__(self):
         return self.title
@@ -124,7 +124,10 @@ class event(models.Model):
 
 
 class about(models.Model):
-    content = models.TextField(null=True)
+    content = models.TextField(null=False)
 
     def __str__(self):
-        return self.id
+        return str(self.id)
+
+    class Meta:
+        ordering = ['id']

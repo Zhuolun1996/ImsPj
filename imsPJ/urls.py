@@ -13,12 +13,11 @@ Including another URLconf
     1. Import the include() function: from django.conf.urls import url, include
     2. Add a URL to urlpatterns:  url(r'^blog/', include('blog.urls'))
 """
-from django.conf.urls import url,include
+from django.conf.urls import url, include
 from django.contrib import admin
 import IMS.views as IMSview
 from django.conf.urls.static import static
 from django.conf import settings
-
 
 urlpatterns = [
     url(r'^admin/', admin.site.urls),
@@ -32,11 +31,16 @@ urlpatterns = [
     url(r'^publication/$', IMSview.publicationHome, name='publication'),
     url(r'^publication/tag/(?P<tag>\w+)/$', IMSview.publicationTag, name='publicationTag'),
     url(r'^publication/year/(?P<year>\w+)/$', IMSview.publicationYear, name='publicationYear'),
-    url(r'^publication/search/$', IMSview.publicationSearch, name='publicatinoSearch'),
-    url(r'^about/$',IMSview.aboutPage,name='about'),
-    url(r'^ask/$',IMSview.askHome,name='askHome'),
-    url(r'^patent/$',IMSview.patentHome,name='patentHome'),
-    url(r'^resource/$',IMSview.resourceHome,name='resourceHome'),
+    url(r'^publication/search/$', IMSview.publicationSearch, name='publicationSearch'),
+    url(r'^about/$', IMSview.aboutPage, name='about'),
+    url(r'^ask/$', IMSview.askHome, name='askHome'),
+    url(r'^patent/$', IMSview.patentHome, name='patentHome'),
+    url(r'^patent/detail/(?P<id>\d+)$', IMSview.patentDetail, name='patentDetail'),
+    url(r'^patent/tag/(?P<tag>\w+)/$', IMSview.patentTag, name='patentTag'),
+    url(r'^patent/search/$', IMSview.patentSearch, name='patentSearch'),
+    url(r'^resource/$', IMSview.resourceHome, name='resourceHome'),
+    url(r'^resource/tag/(?P<tag>\w+)/$', IMSview.resourceTag, name='resourceTag'),
+    url(r'^resource/search/$', IMSview.resourceSearch, name='resourceSearch'),
     url(r'^captcha/', include('captcha.urls')),
 ]
 # Use static file server for static and media files (debug only)

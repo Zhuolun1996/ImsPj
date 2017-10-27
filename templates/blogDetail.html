@@ -27,7 +27,7 @@
                         <a href="#top" style="font-size:120%">categories</a>
                         <ul>
                             {% for item in categories %}
-                                <li><a href="/blog/tag/{{ item.category }}">{{ item.category }}</a></li>
+                                <li><a {% url "blogTag" tag=post.category %}>{{ item.category }}</a></li>
                             {% endfor %}
                         </ul>
                     </li>
