@@ -6,26 +6,33 @@
     <link rel="stylesheet" href="/static/css/bootstrap.min.css">
     <link rel="stylesheet" href="/static/css/buttons.css">
     <link rel="stylesheet" href="/static/css/docs.min.css">
+    <link rel="shortcut icon" type="images/x-icon" href="/static/img/short-cut.ico">
     <style>
-        .nav-tabs{
+        .nav-tabs {
             background-color: white;
         }
-        .bs-docs-sidenav{
-            margin-top:40px;
+
+        .bs-docs-sidenav {
+            margin-top: 40px;
+        }
+
+        .main-header a{
+            text-decoration: none;
+            color:#000000;
         }
     </style>
 </head>
 <body>
 <div class="container bs-docs-container">
-    <div class="page-header" id="top">
+    <div class="page-header main-header" id="top">
         <div class="row">
             <div class="col-xs-8">
-                <h1><a href="/" style="text-decoration:none;">Example page header or logo
-                    <small>Subtext for header</small>
+                <h1><a href="/">IMS
+                    <small>ims</small>
                 </a>
                 </h1>
             </div>
-            <div class="col-xs-4"><img src="/static/img/sysu-logo.jpg"> </div>
+            <div class="col-md-3 col-md-offset-1"><img src="/static/img/sysu-logo.jpg" width="50%" height="50%"></div>
         </div>
     </div>
     {% block content %}
@@ -40,7 +47,7 @@
 <script src="/static/js/docs.min.js"></script>
 <script src="/static/js/scrollfix.min.js"></script>
 <script type="text/javascript">
-    $(document).ready(function() {
+    $(document).ready(function () {
 
         // Dock the header to the top of the window when scrolled past the banner.
         // This is the default behavior.
