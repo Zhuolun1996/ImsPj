@@ -48,7 +48,7 @@
                         </p>
                     </header>
 
-                    <a href="{{ post.file.url }}" role="button">Download[{{ post.file.size }}bytes]</a>
+                    <a href="{{ post.file.url }}" role="button">Download[{{ post.file.size|filesizeformat }}]</a>
                 {% endif %}
             </section>
             {% endfor %}

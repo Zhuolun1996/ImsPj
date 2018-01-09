@@ -31,10 +31,7 @@
                             {% endfor %}
                         </ul>
                     </li>
-                </ul>
-            </nav>
-            <nav class="hidden-print hidden-xs hidden-sm">
-                <ul class="nav bs-docs-sidenav">
+
                     <li>
                         <a href="#top" style="font-size:120%">years</a>
                         <ul>
@@ -63,7 +60,7 @@
                         </p>
                     </header>
 
-                    <a href="{{ post.file.url }}" role="button">Download[{{ post.file.size }}bytes]</a>
+                    <a href="{{ post.file.url }}" role="button">Download[{{ post.file.size|filesizeformat }}]</a>
                 {% endif %}
             </section>
             {% endfor %}

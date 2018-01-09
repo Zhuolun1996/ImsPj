@@ -10,31 +10,67 @@
     <style>
         .nav-tabs {
             background-color: white;
+            margin-top: 10px;
+        }
+
+        .nav-tabs li >a{
+            color: #005825;
+            font-size: 16px;
         }
 
         .bs-docs-sidenav {
             margin-top: 40px;
         }
 
+        .main-header{
+            background-color: #005825;
+            height: 120px;  
+        }
+
+        #header-container{
+            padding-top: 10px;
+        }
+
         .main-header a{
+            color: white;
             text-decoration: none;
-            color:#000000;
+        }
+
+        #header-search{
+            margin-top: 40px;
+        }
+
+        .page-header{
+            font-size: 28px;
+        }
+
+        body{
+            font-family:Arial,Georgia,TimesNewRoma;
+            line-height:200%
         }
     </style>
 </head>
 <body>
-<div class="container bs-docs-container">
-    <div class="page-header main-header" id="top">
-        <div class="row">
-            <div class="col-xs-8">
-                <h1><a href="/">IMSEN
-                    <small>Sun Yat-sen University</small>
-                </a>
-                </h1>
+<div class="main-header" id="top">
+        <div class="container" id="header-container">
+            <div class="row">
+                <div class="col-xs-3"><img class="text-center" src="/static/img/logo.jpg" width="100%" height="100%"></div>
+                <div class="col-xs-5">
+                    <h1><a href="/">IMSEN</a></h1>
+                </div>
+                <div class="col-xs-4">
+                <form class="form-inline" action="http://baidu.com/s" method="get" id="header-search">
+                    <div class="form-group">
+                        <input type="text" value="UTF-8" hidden="true" name="ie">
+                        <input type="text" class="form-control" placeholder="Search" name="wd">
+                    </div>
+                    <input type="submit" class="btn btn-default" style="display: none">
+                </form>
+                </div>
             </div>
-            <div class="col-xs-offset-1 col-xs-3"><img class="text-center" src="/static/img/sysu-logo.jpg" width="50%" height="50%"></div>
         </div>
-    </div>
+</div>
+<div class="container bs-docs-container">
     {% block content %}
     {% endblock %}
 
@@ -52,7 +88,7 @@
         // Dock the header to the top of the window when scrolled past the banner.
         // This is the default behavior.
 
-        $('.nav').scrollFix({zIndex: 1000});
+        //$('.nav').scrollFix({zIndex: 1000});
     });
 
 </script>
